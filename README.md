@@ -1,5 +1,5 @@
 # Relivio
-
+ 
 Relivio is a browser prototype built by ByteLabs at HackRift 2025. It helps food vendors list surplus food for pickup and gives community organisations a place to find available donations.
 
 [Try the browser demo](https://relivio.netlify.app/) · [View the HackRift submission](https://devpost.com/software/bytelabs-food-waste)
