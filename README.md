@@ -29,4 +29,4 @@ HTML, CSS, JavaScript, Leaflet and OpenStreetMap.
 
 ## Team
 
-Jordan Yeo and Phua Cheng Ann built Relivio as ByteLabs for HackRift 2025. [Project credits](https://devpost.com/software/bytelabs-food-waste)
+Jordan Yeo , Wesley Tan Yan Long and Phua Cheng Ann built Relivio as ByteLabs for HackRift 2025. [Project credits](https://devpost.com/software/bytelabs-food-waste)
