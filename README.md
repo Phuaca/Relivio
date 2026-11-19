@@ -12,9 +12,6 @@ Relivio is a browser prototype built by ByteLabs at HackRift 2025. It helps food
 
 The prototype uses sample data and keeps demo changes in the current browser session. Refreshing the page resets them.
 
-## My contribution
-
-I built the photo flow for vendor listings. The browser's image picker lets vendors choose a photo or use the camera on a supported phone. I used the browser's `FileReader` to show a preview before posting and carried the image through to the listing card. In our recorded local demo, I verified that the captured photo appeared in the vendor's listing.
 
 ## Run locally
 
