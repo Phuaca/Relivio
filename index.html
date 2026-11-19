@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relivio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div>
+                    <h1>RELIVIO</h1>
+                    <p>Connecting communities, reducing waste</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content">
+            <!-- Content will be switched via JS -->
+
+            <!-- HOME FEED -->
+            <section id="view-home" class="view active">
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <span class="material-icons-round icon-box">inventory_2</span>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Active</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-round icon-box">groups</span>
+                        <div class="stat-value">847</div>
+                        <div class="stat-label">Helped</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-round icon-box">eco</span>
+                        <div class="stat-value">2.4t</div>
+                        <div class="stat-label">Saved</div>
+                    </div>
+                </div>
+
+                <div class="feed-controls">
+                    <button class="pill-btn active" id="btn-feed-view">Feed View</button>
+                    <button class="pill-btn" id="btn-map-view">Map View</button>
+                </div>
+
+                <!-- Feed List View -->
+                <div id="feed-container">
+
+                    <div class="section-header">
+                        <h2>Available Donations</h2>
+                        <span class="badge-subtle">3 nearby</span>
+                    </div>
+
+                    <div class="donation-list">
+                        <!-- Cards will be populated or hardcoded here -->
+                        <div class="card donation-card" data-store="fairprice">
+                            <div class="card-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                                <span class="badge-urgent">Urgent</span>
+                            </div>
+                            <div class="card-content">
+                                <h3>FairPrice Xtra</h3>
+                                <p class="subtitle">Northshore Plaza II</p>
+                                <div class="card-meta">
+                                    <span><i class="material-icons-round">location_on</i> 0.2 km away</span>
+                                    <span><i class="material-icons-round">schedule</i> 1 hour left</span>
+                                </div>
+                                <div class="card-meta">
+                                    <span>Quantity: 15 Boxes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card donation-card" data-store="kopitiam">
+                            <div class="card-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                            </div>
+                            <div class="card-content">
+                                <h3>Kopitiam Corner</h3>
+                                <p class="subtitle">Northshore Plaza II</p>
+                                <div class="card-meta">
+                                    <span><i class="material-icons-round">location_on</i> 0.2 km away</span>
+                                    <span><i class="material-icons-round">schedule</i> 3 hours left</span>
+                                </div>
+                                <div class="card-meta">
+                                    <span>Quantity: 50 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card donation-card" data-store="coffeebean">
+                            <div class="card-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                            </div>
+                            <div class="card-content">
+                                <h3>The Coffee Bean & Tea Leaf</h3>
+                                <p class="subtitle">Northshore Plaza II</p>
+                                <div class="card-meta">
+                                    <span><i class="material-icons-round">location_on</i> 0.3 km away</span>
+                                    <span><i class="material-icons-round">schedule</i> 2 hours left</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card donation-card" data-store="sweeheng">
+                            <div class="card-image"
+                                style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                            </div>
+                            <div class="card-content">
+                                <h3>Swee Heng 1989 Classic</h3>
+                                <p class="subtitle">Northshore Plaza I</p>
+                                <div class="card-meta">
+                                    <span><i class="material-icons-round">location_on</i> 0.4 km away</span>
+                                    <span><i class="material-icons-round">schedule</i> 4 hours left</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Added styling spacer for bottom nav -->
+                        <div style="height: 80px;"></div>
+                    </div>
+                </div>
+                <!-- End Feed Container -->
+
+                <!-- Map View Container -->
+                <div id="map-container" style="display: none;">
+                    <div id="home-map"
+                        style="height: calc(100vh - 280px); width: 100%; border-radius: 12px; overflow: hidden;"></div>
+                </div>
+            </section>
+
+            <!-- DONATE FORM -->
+            <section id="view-donate" class="view">
+                <div class="section-title-wrap">
+                    <h2>Post a Donation</h2>
+                    <p>Help reduce food waste in your community</p>
+                </div>
+
+                <div class="form-card">
+                    <h3>Food Photo</h3>
+                    <p class="helper-text">Add a clear photo of the items</p>
+                    <input type="file" id="photo-input" accept="image/*" capture="environment" style="display: none;">
+                    <div class="photo-upload-area" id="photo-upload-btn">
+                        <span class="material-icons-round camera-icon">photo_camera</span>
+                        <p>Tap to take photo or upload</p>
+                        <p class="tiny-text">PNG, JPG up to 10MB</p>
+                    </div>
+                    <div id="photo-preview" style="display: none; margin-top: 16px; text-align: center;">
+                        <img id="preview-img" style="max-width: 100%; max-height: 200px; border-radius: 8px;">
+                        <button type="button" id="remove-photo"
+                            style="margin-top: 8px; padding: 6px 12px; background: #dc3545; color: white; border: none; border-radius: 6px; cursor: pointer;">Remove
+                            Photo</button>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3>Food Details</h3>
+
+                    <div class="form-group">
+                        <label>What are you donating?</label>
+                        <input type="text" id="donate-title" placeholder="e.g., Fresh vegetables, Baked goods">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="text" id="donate-quantity" placeholder="e.g., 10 kg, 20 portions">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description (Optional)</label>
+                        <textarea id="donate-description" placeholder="Add details about the food items..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-card">
+                    <h3>Pickup Details</h3>
+                    <div class="form-group">
+                        <label>Pickup Location</label>
+                        <div class="input-icon-wrap">
+                            <span class="material-icons-round">location_on</span>
+                            <input type="text" id="donate-location" placeholder="Your address or block">
+                        </div>
+                        <p class="field-note">Location will be shared only with verified receivers</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Available Until</label>
+                        <div class="input-icon-wrap">
+                            <span class="material-icons-round">schedule</span>
+                            <input type="time" id="donate-time" value="18:00">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary sticky-bottom-btn" id="btn-post-donation">
+                    <span class="material-icons-round">inventory_2</span> Post Donation
+                </button>
+                <div style="height: 100px;"></div>
+            </section>
+
+            <!-- COLLECTIONS -->
+            <section id="view-collections" class="view">
+                <div class="section-title-wrap">
+                    <h2>Collections</h2>
+                    <p>Manage your active and past collections</p>
+                </div>
+
+                <div class="pill-tabs">
+                    <button class="pill-tab active" data-tab="active-collections">Active Order</button>
+                    <button class="pill-tab" data-tab="history-collections">History</button>
+                </div>
+
+                <!-- Active Collections Section -->
+                <div id="active-collections" class="collection-tab-content">
+                    <div class="section-header">
+                        <h3>Active Pickups</h3>
+                        <span class="badge-subtle">Current</span>
+                    </div>
+                    <div class="stops-list active-list">
+                        <!-- Populated by JS -->
+                        <div class="empty-state">No active collections. Accept a donation to see it here.</div>
+                    </div>
+                </div>
+
+                <!-- History Section -->
+                <div id="history-collections" class="collection-tab-content" style="display:none;">
+                    <div class="section-header">
+                        <h3>Past Collections</h3>
+                    </div>
+                    <div class="stops-list history-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <div style="height: 100px;"></div>
+            </section>
+
+            <!-- IMPACT -->
+            <section id="view-impact" class="view">
+                <div class="section-title-wrap">
+                    <h2>Your Impact</h2>
+                    <p>Making a difference together</p>
+                </div>
+
+                <div class="card hero-impact-card">
+                    <div class="hero-stat">
+                        <span class="massive-number">2,450 kg</span>
+                        <span class="label">Total food rescued</span>
+                    </div>
+                    <div class="hero-substats">
+                        <div class="substat">
+                            <span class="number">847</span>
+                            <span class="label">Meals provided</span>
+                        </div>
+                        <div class="substat">
+                            <span class="number">42</span>
+                            <span class="label">Donations made</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3>Environmental Impact</h3>
+                </div>
+
+                <div class="card">
+                    <div class="impact-row">
+                        <h4>Carbon Saved</h4>
+                        <span class="material-icons-round leaf-icon">eco</span>
+                    </div>
+                    <div class="impact-value">
+                        <span class="big-orange">3.2 tons CO₂</span>
+                    </div>
+                    <p class="impact-desc">Equivalent to planting 145 trees or removing 2 cars from the road for a year
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Top 10% locally</span>
+                        <span class="tag">Sustainability Hero</span>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3>Community Stats</h3>
+                </div>
+
+                <div class="stats-grid-2">
+                    <div class="card center-content">
+                        <div class="icon-circle"><span class="material-icons-round">groups</span></div>
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">People helped</div>
+                    </div>
+                    <div class="card center-content">
+                        <div class="icon-circle"><span class="material-icons-round">inventory_2</span></div>
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Active donors</div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3>Achievements</h3>
+                </div>
+
+                <div class="card achievements-list">
+                    <div class="achievement-item">
+                        <div class="ach-icon gold"><span class="material-icons-round">emoji_events</span></div>
+                        <div class="ach-text">
+                            <h4>First Donation</h4>
+                            <p>Completed 3 months ago</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="ach-icon red"><span class="material-icons-round">trending_up</span></div>
+                        <div class="ach-text">
+                            <h4>Rising Star</h4>
+                            <p>50+ donations completed</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="ach-icon heart"><span class="material-icons-round">favorite</span></div>
+                        <div class="ach-text">
+                            <h4>Community Hero</h4>
+                            <p>Helped 500+ people</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 100px;"></div>
+            </section>
+
+            <!-- ACCEPT DONATION VIEW (Replaces Schedule) -->
+            <section id="view-accept" class="view">
+                <div class="section-title-wrap">
+                    <h2>Donation Details</h2>
+                    <p>Review and accept the donation</p>
+                </div>
+
+                <div class="location-select-wrap">
+                    <label>Store Location</label>
+                    <div class="select-wrapper disabled">
+                        <span class="material-icons-round select-icon">store</span>
+                        <select id="schedule-location-select" disabled>
+                            <option value="fairprice">FairPrice Xtra - Northshore Plaza II</option>
+                            <option value="kopitiam">Kopitiam Corner - Northshore Plaza II</option>
+                            <option value="coffeebean">The Coffee Bean & Tea Leaf</option>
+                            <option value="sweeheng">Swee Heng 1989 - Northshore I</option>
+                        </select>
+                        <span class="material-icons-round arrow-icon">lock</span>
+                    </div>
+                </div>
+
+                <div class="card accept-action-card">
+                    <div id="accept-ui-initial">
+                        <div class="hero-icon-circle">
+                            <span class="material-icons-round">volunteer_activism</span>
+                        </div>
+                        <h3>Confirm Collection</h3>
+                        <p>By accepting, you commit to collecting this donation within the available timeframe.</p>
+                        <button id="btn-accept-donation" class="btn-primary full-width big-btn">
+                            Accept Donation
+                        </button>
+                    </div>
+
+                    <div id="accept-ui-success" style="display: none;">
+                        <div class="hero-icon-circle success">
+                            <span class="material-icons-round">check_circle</span>
+                        </div>
+                        <h3>Donation Accepted!</h3>
+                        <p>You can view the details below. <br>Naviagate to the store and mark as collected.</p>
+                    </div>
+                </div>
+
+                <!-- Google Map Container (Hidden initially) -->
+                <div id="store-map-container" class="map-card card" style="display: none;">
+                    <h4>Navigation & Collection</h4>
+                    <iframe id="store-map-frame" width="100%" height="200" style="border:0;" allowfullscreen=""
+                        loading="lazy" src="">
+                    </iframe>
+                    <div class="map-actions">
+                        <a id="btn-directions" href="#" target="_blank" class="btn-secondary full-width"
+                            style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <span class="material-icons-round">directions</span> Get Directions
+                        </a>
+                        <button id="btn-mark-collected-main" class="btn-primary full-width"
+                            style="margin-top: 10px; background-color: #2e7d32;">
+                            <span class="material-icons-round">task_alt</span> Mark as Collected
+                        </button>
+                        <button id="btn-delete-donation" type="button" class="btn-primary full-width"
+                            style="display: none; margin-top: 10px; background-color: #dc3545;">
+                            <span class="material-icons-round">delete</span> Delete Donation
+                        </button>
+                    </div>
+                </div>
+
+                <div style="height: 100px;"></div>
+            </section>
+
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-target="view-home">
+                <span class="material-icons-round">home</span>
+                <span class="label">Home</span>
+            </button>
+            <button class="nav-item" data-target="view-donate">
+                <span class="material-icons-round">favorite</span>
+                <span class="label">Donate</span>
+            </button>
+            <button class="nav-item" data-target="view-collections">
+                <span class="material-icons-round">inventory</span>
+                <span class="label">Collections</span>
+            </button>
+            <button class="nav-item" data-target="view-impact">
+                <span class="material-icons-round">bar_chart</span>
+                <span class="label">Impact</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Custom Delete Confirmation Modal -->
+    <div id="delete-modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; align-items: center; justify-content: center;">
+        <div
+            style="background: white; padding: 24px; border-radius: 12px; width: 85%; max-width: 320px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+            <div
+                style="background: #ffebee; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                <span class="material-icons-round" style="font-size: 32px; color: #dc3545;">delete_forever</span>
+            </div>
+            <h3 style="margin: 0 0 8px; color: #333; font-family: 'Outfit', sans-serif;">Delete Donation?</h3>
+            <p style="margin: 0 0 20px; color: #666; font-size: 14px;">This action cannot be undone.</p>
+            <div style="display: flex; gap: 12px;">
+                <button id="btn-cancel-delete"
+                    style="flex: 1; padding: 12px; border: 1px solid #ddd; background: white; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif;">Cancel</button>
+                <button id="btn-confirm-delete"
+                    style="flex: 1; padding: 12px; border: none; background: #dc3545; color: white; border-radius: 8px; font-weight: 600; cursor: pointer; font-family: 'Outfit', sans-serif;">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
